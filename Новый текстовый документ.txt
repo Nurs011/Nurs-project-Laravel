@@ -1,0 +1,102 @@
+while True:
+    print("===============Menu:======================")
+    print("1.Decimal to Binary")
+    print("2.Binary to Decimal")
+    print("3.Decimal to Octal")
+    print("4.Octal to Decimal")
+    print("5.Decimal to Hexadecimal")
+    print("6.Hexadecimal to Decimal")
+    print("0.Exit")
+    choice=int(input("Choice menu:"))
+    if choice==1:
+        def DecimalToBinary(num):
+            if num >= 1:
+                DecimalToBinary(num // 2)
+            print(num % 2, end = '')
+        decimalValue = int(input('Decimal Value: '))
+        DecimalToBinary(decimalValue)
+        print("\n")                
+    elif choice==2:
+        def BinaryToDecimal(num): 
+            decimal, i, n = 0, 0, 0
+            while(num != 0): 
+                dec = num % 10
+                decimal = decimal + dec * pow(2, i) 
+                num = num//10
+                i += 1
+            print("The decimal value is :",decimal)    
+        binaryValue = int(input('Binary Value: '))
+        BinaryToDecimal(binaryValue)
+        print("\n")
+       
+    elif choice==3:
+        def DecimalToOctal(num):
+            octal = 0
+            i = 1
+            while (num != 0):
+                octal = octal + (num % 8) * i
+                num = int(num / 8)
+                i = i * 10
+            print("The octal value is :",octal)
+        decimal = int(input('Decimal Value: '))
+        DecimalToOctal(decimal)
+        print("\n")
+    elif choice==4:
+        def OctalToDecimal(num): 
+            decimal_value = 0 
+            base = 1
+            while (num): 
+                last_digit = num % 10
+                num = int(num / 10)
+                decimal_value += last_digit * base
+                base = base * 8  
+            print("The decimal value is :",decimal_value)
+        octalValue = int(input('Octal Value: '))
+        OctalToDecimal(octalValue)
+        print("\n")   
+    elif choice==5:
+        def DH():
+            result = int(input("Decimal value: "))
+            hexadecimal = ""
+            while result != 0:
+                remainder = DecimalToHexadecimal(result % 16)
+                hexadecimal = str(remainder) + hexadecimal
+                result = int(result / 16)
+            print(hexadecimal)
+
+        def DecimalToHexadecimal(num):
+            decimal = [10 , 11 , 12 , 13 , 14 , 15 ]
+            hexadecimal = ["A", "B", "C", "D", "E", "F"]
+            for counter in range(7):
+                if num == decimal[counter - 1]:
+                    num = hexadecimal[counter - 1]
+            return num
+        DH()
+        print("\n")
+    elif choice==6:
+        def DecimalNumber(num):
+            nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+            for i in range(len(nums)):
+                if num == nums[i]:
+                    return i
+
+        def HexadecimalToDecimal(hex):
+            decimal = 0
+            power = 0
+            for x in range(len(hex), 0, -1):
+                decimal = decimal + 16 ** power * DecimalNumber(hex[x-1])
+                power += 1
+            print(str(decimal))
+        hexValue = str(input('Hexadecimal Value: '))
+        HexadecimalToDecimal(hexValue)
+        print("\n")
+    elif choice==0:
+        break;
+    else:
+        print("Error!Please,choice again!")
+        
+        
+            
+            
+        
+        
